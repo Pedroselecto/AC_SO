@@ -6,7 +6,7 @@ touch disponiveis.txt
 touch matriculadas.txt
 
 # Popula o 'disponiveis.txt' se estiver vazio
-if [ ! -s "disponiveis.txt" ]; then # Se o arquivo estiver vazio
+if [ ! -s "disponiveis.txt" ]; then # Se o arquivo estiver vazio, os echos debaixos serão adicionados
     echo "IBM8940|Sistemas Operacionais|Luiz Fernando|Seg 13:30-17:40" > disponiveis.txt
     echo "IBM1234|Cálculo 1|Daniele|Ter/Qui 07:30-11:40" >> disponiveis.txt
     echo "IBM5678|Sistemas Embarcados|Rigel|Ter/Qui 18:40-22:30" >> disponiveis.txt
@@ -48,16 +48,17 @@ mostrar_disciplinas_matriculadas() {
     mostrar_cabecalho
     echo "--- Minhas Disciplinas Matriculadas ---"
     echo ""
-    
+
+	# Caso o arquivo de matricula estiver vazio, aparecera a mensagem de "Nenhuma materia disponivel".
     if [ ! -s "matriculadas.txt" ]; then
         echo "Nenhuma disciplina matriculada."
-    else
+    else # Caso o contrario, exibra as diciplinas matriculadas e que estejam no arquivo de disponiveis.
         (
             echo "CÓDIGO|NOME|PROFESSOR|HORÁRIO"
             while read -r codigo; do
-                grep -w "$codigo" disponiveis.txt
+                grep -w "$codigo" disponiveis.txt # Pega os arquivos disponiveis.
             done < "matriculadas.txt"
-        ) | column -t -s '|'
+        ) | column -t -s '|' # Formata a saida dos resultados
     fi
     echo ""
 }
@@ -67,7 +68,7 @@ mostrar_lista_disponiveis() {
     echo "--- Disciplinas Disponíveis para Matrícula ---"
     echo ""
     
-    (echo "CÓDIGO|NOME DA DISCIPLINA|PROFESSOR|HORÁRIO"; cat disponiveis.txt) | column -t -s '|'
+    (echo "CÓDIGO|NOME DA DISCIPLINA|PROFESSOR|HORÁRIO"; cat disponiveis.txt) | column -t -s '|' # Formata a saida dos resultados 
     echo ""
 }
 
@@ -77,17 +78,20 @@ realizar_matricula() {
     mostrar_lista_disponiveis
     
     read -p "Digite o CÓDIGO da disciplina que deseja matricular (ou 'v' para voltar): " codigo_matricular
-    
+
+	# Se digitar "v" aborta a operação
     if [ "$codigo_matricular" == "v" ]; then
         return
     fi
-    
+
+	# Se não for encontardo a materia desejada, então exibe a mensagem de erro
     if ! grep -q -w "$codigo_matricular" disponiveis.txt; then
         echo "ERRO: Código '$codigo_matricular' não encontrado ou inválido."
         sleep 2
         return
     fi
-    
+
+	# Se a materia a qual o usuario quer se matricular, o mesmo ja estiver matriculado, entçao exibe a mensagem de erro.
     if grep -q -w "$codigo_matricular" matriculadas.txt; then
         echo "ERRO: Você já está matriculado na disciplina '$codigo_matricular'."
         sleep 2
@@ -96,7 +100,7 @@ realizar_matricula() {
     
     echo "$codigo_matricular" >> matriculadas.txt
     
-    nome_disciplina=$(grep -w "$codigo_matricular" disponiveis.txt | cut -d'|' -f2)
+    nome_disciplina=$(grep -w "$codigo_matricular" disponiveis.txt | cut -d'|' -f2) # Exibe o nome da diciplina matriculada
     
     echo "SUCESSO: Matrícula em '$nome_disciplina' realizada!"
     sleep 2
@@ -108,12 +112,14 @@ realizar_trancamento() {
     echo "--- Trancamento de Matrícula ---"
     echo ""
 
+	# Se a disciplina a qual o usuario que não for encontarda, então ira exibir a mensagem de erro
     if [ ! -s "matriculadas.txt" ]; then
         echo "Nenhuma disciplina matriculada para trancar."
         sleep 2
         return
     fi
 
+	# Mostra as diciplinas matriculadas pelo aluno (usuario), que estejam no arquivo de matricula.txt e disponiveis.txt
     echo "Suas disciplinas matriculadas atualmente:"
     (
         echo "CÓDIGO|NOME|PROFESSOR|HORÁRIO"
@@ -125,17 +131,19 @@ realizar_trancamento() {
 
     read -p "Digite o CÓDIGO da disciplina que deseja trancar (ou 'v' para voltar): " codigo_trancar
 
+	# Se digitar "v" aborta a operação
     if [ "$codigo_trancar" == "v" ]; then
         return
     fi
 
+	# Exibira a mensagem de erro caso o aluno não esteja matriculado na materia
     if ! grep -q -w "$codigo_trancar" matriculadas.txt; then
         echo "ERRO: Você não está matriculado na disciplina '$codigo_trancar'."
         sleep 2
         return
     fi
 
-    sed -i "/^$codigo_trancar$/d" matriculadas.txt
+    sed -i "/^$codigo_trancar$/d" matriculadas.txt # Deleta a disciplina 
 
     nome_disciplina=$(grep -w "$codigo_trancar" disponiveis.txt | cut -d'|' -f2)
     echo "SUCESSO: Trancamento da disciplina '$nome_disciplina' realizado."
@@ -207,17 +215,17 @@ while true; do
 					
 					export LC_TIME=pt_BR.UTF-8
 					
-					mes_atual=$(date +"%B" | sed 's/./\u&/')
-					mes_proximo=$(date -d "+1 month" +"%B" | sed 's/./\u&/')
-					ano_proximo=$(date -d "+1 month" +"%Y")
-					mes_proximo_num=$(date -d "+1 month" +"%m")
+					mes_atual=$(date +"%B" | sed 's/./\u&/') # Define o mes atual
+					mes_proximo=$(date -d "+1 month" +"%B" | sed 's/./\u&/') # Define o proximo mes com o "+1"
+					ano_proximo=$(date -d "+1 month" +"%Y")# Define o proximo ano com o "+1"
+					mes_proximo_num=$(date -d "+1 month" +"%m") # Define o proximo mes como numero 
 					
 					valor_mensalidade="R$ 2.500,00"
 					
 					echo "Resumo dos seus pagamentos:"
 					echo ""
 					
-					# Convertido de 'printf' para 'column'
+					# Mostra os destalhes das mensalidade
 					(
 						echo "Mês|Status|Valor (Vencimento)"
 						echo "----------------|------|---------------------------------------"
