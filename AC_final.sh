@@ -1,4 +1,5 @@
 #!/bin/bash
+trap "" INT
 
 # --- CAMINHOS GLOBAIS (Mais seguro) ---
 DIR_PROJETO="/opt/ACSO"
