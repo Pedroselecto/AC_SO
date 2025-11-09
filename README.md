@@ -68,3 +68,39 @@ Comandos utilizados para a realização do projeto, separados entre comandos do 
 * su - [usuário] --> Foi usado diversas vezes para alterar entre os usuários Coordenador e Aluno;
 * alias --> Foi utilizado para simplificar o comando “bash opt/ACSO/ACSO” para acso.
 
+## Guia de instalação e configuração
+Gia completo para que o sistema possa funcionar de forma correta e sem erros.
+
+### Etapa 1: Criação dos usuarios
+O script depende de dois usuários específicos no sistema Linux.
+* sudo adduser aluno --> Cria o usuário 'aluno' e define uma senha.
+* sudo adduser coordenador -->  Cria o usuário 'coordenador' e define uma senha.
+
+### Etapa 2: Criação das pastas do projeto
+Todos os arquivos do sistema (script e bancos de dados) são centralizados em /opt/ACSO para que ambos os usuários possam acessá-los.
+* sudo mkdir /opt/ACSO --> Cria a pasta do projeto
+
+### Etapa 3: Instalar o script
+O código-fonte (ACSO.sh) deve ser colocado dentro da nova pasta.
+* sudo vi /opt/ACSO/ACSO.sh --> Abre o editor 'vi' para criar o arquivo.
+* obs:
+   * (Neste ponto, o código completo é colado no editor)
+   * (Para apagar um conteúdo antigo, usa-se 'ggdG')
+   * (Para colar, usa-se ':set paste', 'i', Ctrl+Shift+V, Esc, ':set nopaste')
+   * (Para salvar e sair, usa-se ':wq')
+### Etapa 4: Definido permissões
+Esta é a etapa mais crítica. Usamos chmod para definir quem pode ler, escrever e executar os arquivos (Passo a passo).
+* sudo chmod 777 /opt/ACSO --> Permissão da pasta
+  * Dá permissão total (777) na pasta.
+  * Isso é necessário para que o 'sed -i' (usado no trancamento)
+  * possa criar arquivos temporários na pasta.
+* sudo chmod 666 /opt/ACSO/disponiveis.txt || sudo chmod 666 /opt/ACSO/matriculadas.txt || sudo chmod 666 /opt/ACSO/biblioteca.txt --> Permissão dos Arquivos de Dados
+  * Dá permissão de leitura e escrita para todos os usuários.
+  * Permite que 'aluno' escreva em 'matriculadas.txt' e 'coordenador' escreva em 'disponiveis.txt'.
+* sudo chmod 755 /opt/ACSO/ACSO.sh --> Permissão do Script
+  * Permite que todos os usuários leiam e executem o script, mas apenas o 'root' (dono) pode alterá-lo.
+### Etapa 5: Criar o alias para facilitar a execução do codigo (opcional)
+Para facilitar a execução, um atalho (`alias`) pode ser criado para todos os usuários do sistema.
+* sudo nano /etc/bash.bashrc --> Edita o arquivo de configuração global do Bash.
+* alias acso="bash /opt/ACSO/ACSO.sh" --> Adiciona a linha abaixo no final do arquivo.
+* Salva e fecha (Ctrl+X, S, Enter), o alias agora funcionara em todas asterminais.
