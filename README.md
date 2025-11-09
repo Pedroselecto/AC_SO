@@ -58,13 +58,13 @@ Comandos utilizados para a realização do projeto, separados entre comandos do 
     * criar_disciplina() --> Chamada pela Opção 1 do menu_coordenador. Pede ao coordenador os detalhes de uma nova disciplina (código, nome, professor, horário), valida se o código já não existe no disponiveis.txt e, se não existir, adiciona (>>) a nova disciplina ao final do arquivo.
   
 ### Comando do sistema
-* sudo --> Executa um comando com privilégios de administrador (root). Usado para criar usuários e alterar permissões em pastas de sistema.
-* adduser --> Foi usado para criar os usuários aluno e coordenador.
-* mv --> Fizemos isso para fazer com que todos os usuários tivessem acesso ao script.
-* chmod --> Altera as permissões de acesso de arquivos e pastas.
-  * 777 (rwxrwxrwx): Permissão total. Usada na pasta /opt/ACSO para permitir a criação de arquivos temporários pelo sed.
-  * 666 (rw-rw-rw-): Leitura e escrita para todos. Usada nos arquivos .txt para permitir que ambos os perfis leiam e escrevam nos bancos de dados.
-  * 755 (rwxr-xr-x): Permissão de execução para todos, mas escrita apenas para o dono (root). Usada no script ACSO por segurança.
-* su - [usuário] --> Foi usado diversas vezes para alterar entre os usuários, entre coordenador e aluno.
-* alias --> Foi utilizado para simplificar o comando “bash opt/ACSO/ACSO”.
+* sudo --> Executa um comando com privilégios de administrador. Usado para criar usuários e alterar permissões em pastas de sistema;
+* adduser --> Foi usado para criar os usuários aluno e coordenador;
+* mv --> Move ou renomeia arquivos. Usado para mover o script para /opt/ACSO. Fizemos isso para todos os usuários terem acesso ao script;
+* chmod --> Usado para alterar as permissões de arquivos:
+  * 777 (rwxrwxrwx): Permissão total. Usada na pasta /opt/ACSO para permitir a criação de arquivos temporários pelo sed;
+  * 666 (rw-rw-rw-): Leitura e escrita para todos. Usada nos arquivos .txt para permitir que ambos os perfis leiam e escrevam neles;
+  * 755 (rwxr-xr-x): Permissão de execução para todos, mas escrita apenas para o dono. Faz com que os usuários Aluno e Coordenador não possam editar o script;
+* su - [usuário] --> Foi usado diversas vezes para alterar entre os usuários Coordenador e Aluno;
+* alias --> Foi utilizado para simplificar o comando “bash opt/ACSO/ACSO” para acso.
 
