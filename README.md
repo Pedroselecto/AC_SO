@@ -1,8 +1,8 @@
 # AC_SO
 ## Documentação do projeto de Linux 
 
-**Titulo**
-Ac de sistemas operacionais - Portal Acadêmico 
+**Titulo:**
+AC de Sistemas Operacionais - Portal Acadêmico 
 
 ## Alunos
 
