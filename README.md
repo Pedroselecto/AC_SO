@@ -97,10 +97,10 @@ Esta é a etapa mais crítica. Usamos chmod para definir quem pode ler, escrever
 * sudo chmod 666 /opt/ACSO/disponiveis.txt || sudo chmod 666 /opt/ACSO/matriculadas.txt || sudo chmod 666 /opt/ACSO/biblioteca.txt --> Permissão dos Arquivos de Dados
   * Dá permissão de leitura e escrita para todos os usuários.
   * Permite que 'aluno' escreva em 'matriculadas.txt' e 'coordenador' escreva em 'disponiveis.txt'.
-* sudo chmod 755 /opt/ACSO/ACSO.sh --> Permissão do Script
+* sudo chmod 755 /opt/ACSO/ACSO --> Permissão do Script
   * Permite que todos os usuários leiam e executem o script, mas apenas o 'root' (dono) pode alterá-lo.
 ### Etapa 5: Criar o alias para facilitar a execução do codigo (opcional)
 Para facilitar a execução, um atalho (`alias`) pode ser criado para todos os usuários do sistema.
 * sudo nano /etc/bash.bashrc --> Edita o arquivo de configuração global do Bash.
-* alias acso="bash /opt/ACSO/ACSO.sh" --> Adiciona a linha abaixo no final do arquivo.
+* alias acso="bash /opt/ACSO/ACSO" --> Adiciona a linha abaixo no final do arquivo.
 * Salva e fecha (Ctrl+X, S, Enter), o alias agora funcionara em todas asterminais.
