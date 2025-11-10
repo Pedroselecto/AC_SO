@@ -8,11 +8,10 @@ ARQUIVO_MATRICULADAS="$DIR_PROJETO/matriculadas.txt"
 ARQUIVO_BIBLIOTECA="$DIR_PROJETO/biblioteca.txt"
 ARQUIVO_TEMP="$DIR_PROJETO/_temp_results.txt" # Para a busca na biblioteca
 
-# --- CRIAÇÃO DOS "BANCOS DE DADOS" ---
 touch "$ARQUIVO_DISPONIVEIS"
 touch "$ARQUIVO_MATRICULADAS"
 touch "$ARQUIVO_BIBLIOTECA"
-touch "$ARQUIVO_TEMP" # Garante que o arquivo temporário exista
+touch "$ARQUIVO_TEMP"
 
 # Popula o 'disponiveis.txt' se estiver vazio
 if [ ! -s "$ARQUIVO_DISPONIVEIS" ]; then 
@@ -155,7 +154,7 @@ realizar_trancamento() {
     sleep 2
 }
 
-# --- FUNÇÕES DE ALUNO (NOVAS: BIBLIOTECA E INFO) ---
+# --- FUNÇÕES DE ALUNO (BIBLIOTECA E INFO) ---
 buscar_biblioteca() {
     mostrar_cabecalho
     echo "--- Biblioteca Virtual ---"
@@ -274,7 +273,7 @@ menu_coordenador() {
 }
 
 
-# --- MENU DO ALUNO (MESCLADO) ---
+# --- MENU DO ALUNO ---
 menuprincipal(){
 
 while true; do
@@ -283,9 +282,9 @@ while true; do
 	
 	echo "Menu de Escolhas:"
 	echo "1) Disciplinas"
-	echo "2) Buscar livros na biblioteca" # <-- ATUALIZADO
+	echo "2) Buscar livros na biblioteca"
 	echo "3) Informações financeiras"
-	echo "4) Informações do aluno" # <-- ATUALIZADO
+	echo "4) Informações do aluno"
 	echo "5) Finalizar o programa"
 	echo ""
 	read -p "Selecione uma opção: " opcao
@@ -317,7 +316,6 @@ while true; do
 			esac;;
 	
 		2)
-			# --- ATUALIZADO ---
 			buscar_biblioteca
 			;;
 			
@@ -391,7 +389,6 @@ while true; do
 			esac;;
 			
 		4)
-			# --- ATUALIZADO ---
 			mostrar_informacoes_aluno
 			;;
 		5)
@@ -410,9 +407,7 @@ while true; do
 done 
 }
 
-# --- EXECUÇÃO DO SCRIPT (ROTEADOR DE USUÁRIO) ---
-# Verifica qual usuário do Linux está executando o script
-# e chama o menu apropriado.
+# --- VERIFICAÇÃO DE USUÁRIO ---
 
 if [ "$USER" == "aluno" ]; then
     menuprincipal
