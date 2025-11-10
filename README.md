@@ -85,8 +85,7 @@ O código-fonte (ACSO) deve ser colocado dentro da nova pasta.
 * sudo vi /opt/ACSO/ACSO.sh --> Abre o editor 'vi' para criar o arquivo.
 * obs:
    * (Neste ponto, o código completo é colado no editor)
-   * (Para apagar um conteúdo antigo, usa-se 'ggdG')
-   * (Para colar, usa-se ':set paste', 'i', Ctrl+Shift+V, Esc, ':set nopaste')
+   * (Para colar, usa-se ':set paste', 'i', Ctrl+Shift+V, Esc)
    * (Para salvar e sair, usa-se ':wq')
 ### Etapa 4: Definido permissões
 Usamos chmod para definir quem pode ler, escrever e executar os arquivos (Passo a passo).
