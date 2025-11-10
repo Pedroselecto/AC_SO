@@ -66,7 +66,7 @@ Comandos utilizados para a realização do projeto, separados entre comandos do 
   * 666 (rw-rw-rw-): Leitura e escrita para todos. Usada nos arquivos .txt para permitir que ambos os perfis leiam e escrevam neles;
   * 755 (rwxr-xr-x): Permissão de execução para todos, mas escrita apenas para o dono. Faz com que os usuários Aluno e Coordenador não possam editar o script;
 * su - [usuário] --> Foi usado diversas vezes para alterar entre os usuários Coordenador e Aluno;
-* alias --> Foi utilizado para simplificar o comando “bash opt/ACSO/ACSO” para acso.
+* alias --> Foi utilizado para simplificar o comando “bash opt/ACSO/ACSO.sh” para acso.
 
 ## Guia de instalação e configuração
 Gia completo para que o sistema possa funcionar de forma correta e sem erros.
@@ -82,7 +82,7 @@ Todos os arquivos do sistema (script e dados) são centralizados em /opt/ACSO pa
 
 ### Etapa 3: Instalar o script
 O código-fonte (ACSO) deve ser colocado dentro da nova pasta.
-* sudo vi /opt/ACSO/ACSO --> Abre o editor 'vi' para criar o arquivo.
+* sudo vi /opt/ACSO/ACSO.sh --> Abre o editor 'vi' para criar o arquivo.
 * obs:
    * (Neste ponto, o código completo é colado no editor)
    * (Para apagar um conteúdo antigo, usa-se 'ggdG')
@@ -97,7 +97,7 @@ Usamos chmod para definir quem pode ler, escrever e executar os arquivos (Passo 
 * sudo chmod 666 /opt/ACSO/disponiveis.txt || sudo chmod 666 /opt/ACSO/matriculadas.txt || sudo chmod 666 /opt/ACSO/biblioteca.txt --> Permissão dos Arquivos de Dados
   * Dá permissão de leitura e escrita para todos os usuários.
   * Permite que 'aluno' escreva em 'matriculadas.txt' e 'coordenador' escreva em 'disponiveis.txt'.
-* sudo chmod 755 /opt/ACSO/ACSO --> Permissão do Script
+* sudo chmod 755 /opt/ACSO/ACSO.sh --> Permissão do Script
   * Permite que todos os usuários leiam e executem o script, mas apenas o 'root' (dono) pode alterá-lo.
 ### Etapa 5: Criar o alias para facilitar a execução do codigo (opcional)
 Para facilitar a execução, um atalho (`alias`) pode ser criado para todos os usuários do sistema.
