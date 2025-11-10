@@ -93,7 +93,7 @@ Usamos chmod para definir quem pode ler, escrever e executar os arquivos (Passo 
   * Dá permissão total (777) na pasta.
   * Isso é necessário para que o 'sed -i' (usado no trancamento)
   * possa criar arquivos temporários na pasta.
-* sudo chmod 666 /opt/ACSO/disponiveis.txt || sudo chmod 666 /opt/ACSO/matriculadas.txt || sudo chmod 666 /opt/ACSO/biblioteca.txt --> Permissão dos Arquivos de Dados
+* sudo chmod 666 /opt/ACSO/disponiveis.txt || sudo chmod 666 /opt/ACSO/matriculadas.txt || sudo chmod 666 /opt/ACSO/biblioteca.txt || sudo chmod 666 /opt/ACSO/_temp_results.txt --> Permissão dos Arquivos de Dados
   * Dá permissão de leitura e escrita para todos os usuários.
   * Permite que 'aluno' escreva em 'matriculadas.txt' e 'coordenador' escreva em 'disponiveis.txt'.
 * sudo chmod 755 /opt/ACSO/ACSO.sh --> Permissão do Script
