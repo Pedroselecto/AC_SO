@@ -15,10 +15,10 @@ touch "$ARQUIVO_TEMP"
 
 # Popula o 'disponiveis.txt' se estiver vazio
 if [ ! -s "$ARQUIVO_DISPONIVEIS" ]; then 
-    echo "IBM8940|Sistemas Operacionais|Luiz Fernando|Seg 19:00-22:30" > "$ARQUIVO_DISPONIVEIS"
-    echo "IBM1234|Cálculo 1|Maria Silva|Ter/Qui 09:00-11:00" >> "$ARQUIVO_DISPONIVEIS"
-    echo "IBM5678|Banco de Dados|Carlos Souza|Qua/Sex 14:00-16:00" >> "$ARQUIVO_DISPONIVEIS"
-    echo "IBM3321|Redes de Computadores|Ana Braga|Seg/Qua 16:00-18:00" >> "$ARQUIVO_DISPONIVEIS"
+    echo "IBM8940|Sistemas Operacionais|Luiz Fernando|Seg 13:30-17:40" > "$ARQUIVO_DISPONIVEIS"
+    echo "IBM1234|Cálculo 1|Daniele|Ter/Qui 07:30-11:40" >> "$ARQUIVO_DISPONIVEIS"
+    echo "IBM5678|Estrutura de dados|Rodrigo Luna|Sex 07:30-11:40" >> "$ARQUIVO_DISPONIVEIS"
+    echo "IBM3321|Programação orientada a objetos|Thiago|Qui 13:30-17:40" >> "$ARQUIVO_DISPONIVEIS"
 fi
 
 # Popula o 'biblioteca.txt' se estiver vazio
