@@ -81,8 +81,8 @@ Todos os arquivos do sistema (script e bancos de dados) são centralizados em /o
 * sudo mkdir /opt/ACSO --> Cria a pasta do projeto
 
 ### Etapa 3: Instalar o script
-O código-fonte (ACSO.sh) deve ser colocado dentro da nova pasta.
-* sudo vi /opt/ACSO/ACSO.sh --> Abre o editor 'vi' para criar o arquivo.
+O código-fonte (ACSO) deve ser colocado dentro da nova pasta.
+* sudo vi /opt/ACSO/ACSO --> Abre o editor 'vi' para criar o arquivo.
 * obs:
    * (Neste ponto, o código completo é colado no editor)
    * (Para apagar um conteúdo antigo, usa-se 'ggdG')
