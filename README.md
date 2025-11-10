@@ -77,7 +77,7 @@ O script depende de dois usuários específicos no sistema Linux.
 * sudo adduser coordenador -->  Cria o usuário 'coordenador' e define uma senha.
 
 ### Etapa 2: Criação das pastas do projeto
-Todos os arquivos do sistema (script e bancos de dados) são centralizados em /opt/ACSO para que ambos os usuários possam acessá-los.
+Todos os arquivos do sistema (script e dados) são centralizados em /opt/ACSO para que ambos os usuários possam acessá-los.
 * sudo mkdir /opt/ACSO --> Cria a pasta do projeto
 
 ### Etapa 3: Instalar o script
@@ -89,7 +89,7 @@ O código-fonte (ACSO) deve ser colocado dentro da nova pasta.
    * (Para colar, usa-se ':set paste', 'i', Ctrl+Shift+V, Esc, ':set nopaste')
    * (Para salvar e sair, usa-se ':wq')
 ### Etapa 4: Definido permissões
-Esta é a etapa mais crítica. Usamos chmod para definir quem pode ler, escrever e executar os arquivos (Passo a passo).
+Usamos chmod para definir quem pode ler, escrever e executar os arquivos (Passo a passo).
 * sudo chmod 777 /opt/ACSO --> Permissão da pasta
   * Dá permissão total (777) na pasta.
   * Isso é necessário para que o 'sed -i' (usado no trancamento)
@@ -102,5 +102,5 @@ Esta é a etapa mais crítica. Usamos chmod para definir quem pode ler, escrever
 ### Etapa 5: Criar o alias para facilitar a execução do codigo (opcional)
 Para facilitar a execução, um atalho (`alias`) pode ser criado para todos os usuários do sistema.
 * sudo nano /etc/bash.bashrc --> Edita o arquivo de configuração global do Bash.
-* alias acso="bash /opt/ACSO/ACSO" --> Adiciona a linha abaixo no final do arquivo.
-* Salva e fecha (Ctrl+X, S, Enter), o alias agora funcionara em todas asterminais.
+* alias acso="bash /opt/ACSO/ACSO" --> Adicione esta linha no final do arquivo.
+* Salve e feche (Ctrl+X, S, Enter), o alias agora funcionará em todos os terminais.
